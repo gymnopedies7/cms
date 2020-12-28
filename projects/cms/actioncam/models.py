@@ -1,6 +1,6 @@
 from django.db import models
 
-def get_file_name(instance, filename):
+def get_file_name(instance, file):
     ext = filename.split('_')
     return (ext[0][:2]+ext[1][:2]+ext[1][2:])   # 파일명에 기록된 날짜기준
 # 2020_1222_145701_003
@@ -14,6 +14,9 @@ class Upload_video(models.Model):
     pub_date = models.DateTimeField()
     description = models.TextField()
     file = models.FileField()
-    create_date = models.CharField(max_length=20)  # 파일명으로부터 수정필요
+    create_date = models.DateTimeField(get_file_name)  # 파일명으로부터 수정필요
     emergency = models.BooleanField(null=True)
+
+    def __str__(self):
+        return self.subject
 

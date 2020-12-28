@@ -1,0 +1,31 @@
+
+<html>
+<head>
+    <title>Video List</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+<div class='content container'>
+    <header class = 'page-header' style='overflow: auto;'>
+        <h1 style='display: inline;'>Video List</h1>
+        <a class = 'btn btn-default' href='/actioncam/new' style='float:right;'>New Video</a>
+    </header>
+    <div class = 'row'>
+        <div class = 'col-md-12'>
+            {% if video_list %}
+            <ul>
+                {% for video in video_list %}
+                <li>
+                    <a href="{% url 'actioncam:detail' video.id %}">{{video.subject}}</a>
+                </li>
+                {% endfor %}            
+            </ul>
+        {% else %}
+            <p>등록된 영상이 없습니다.</p>
+        {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
