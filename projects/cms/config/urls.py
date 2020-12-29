@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from qna import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('actioncam/', include('actioncam.urls')),
     path('qna/', include('qna.urls')),
+    path('common/', include('common.urls')),
+    path('', views.index, name='index'),
+
 ]
