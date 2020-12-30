@@ -44,7 +44,7 @@ def index(request):
 def detail(request, question_id):
 
     question = Question.objects.get(id=question_id)
-    context = {'question': question}
+    context = {'question': question }
     
     return render(request, 'qna/question_detail.html', context)
 
